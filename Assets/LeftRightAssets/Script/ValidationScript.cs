@@ -11,6 +11,7 @@ public class ValidationScript : MonoBehaviour
 {
     //KTANE Variables
     public KMBombInfo _Bomb;
+    public KMBossModule Boss;
     public KMNeedyModule Needy;
     public KMSelectable Dial;
 
@@ -33,6 +34,7 @@ public class ValidationScript : MonoBehaviour
     private int Solves;
     private string MostRecent;
     private List<string> SolveList = new List<string> { };
+    private string[] IgnoredModules;
 
     void Awake()
     {
@@ -40,6 +42,12 @@ public class ValidationScript : MonoBehaviour
         GetComponent<KMNeedyModule>().OnNeedyActivation += NeedyStart;
         //GetComponent<KMNeedyModule>().OnNeedyDeactivation += YouFuckedUp;
         Dial.OnInteract += delegate { DialToggle(); return false; };
+
+        if (IgnoredModules == null) {
+            IgnoredModules = Boss.GetIgnoredModules(Needy, new string[]{ //Potentially excessive, but anything with 'may solve with others' is safer
+                "The Twin", "X", "Y", "Castor", "Pollux", "Apple Pen", "Pineapple Pen", "Reporting Anomalies", "Solve Shift", "Tyler Verifies"
+            });
+        }
     }
 
     // Update is called once per frame
@@ -61,15 +69,18 @@ public class ValidationScript : MonoBehaviour
             MostRecent = GetLatestSolve(_Bomb.GetSolvedModuleNames(), SolveList);
             SolveList.Add(MostRecent);
             MostRecent = SolveList[Solves];
-            Solves = _Bomb.GetSolvedModuleNames().Count();
+            Solves++; //thank you exish for this clever solution --blan
+
+            if (IgnoredModules.Contains(MostRecent))
+            {
+                Debug.Log("Ignored module " + MostRecent + " has been solved.");
+                return;
+            }
 
             if (NeedyActive)
             {
                 LastSolveEvaluation();
-                return;
             }
-            else
-                return;
         }
     }
 
@@ -230,7 +241,7 @@ public class ValidationScript : MonoBehaviour
                                 Debug.Log("Number 5, Off, Off");
                                 break;
                             case 1:
-                                validLetters = new string[] { "i", "a", "h", "s", "n", "t", "e" };
+                                validLetters = new string[] { "i", "a", "h", "n", "s", "b", "t", "e" };
                                 Debug.Log("Number 5, Off, On");
                                 break;
                         }
@@ -239,7 +250,7 @@ public class ValidationScript : MonoBehaviour
                         switch (ledStates[1])
                         {
                             case 0:
-                                validLetters = new string[] { "o", "t", "l", "h", "m", "b", "h", "i" };
+                                validLetters = new string[] { "o", "t", "l", "h", "b", "g", "i" };
                                 Debug.Log("Number 5, On, Off");
                                 break;
                             case 1:

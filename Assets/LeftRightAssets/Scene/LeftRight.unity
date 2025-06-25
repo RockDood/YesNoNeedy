@@ -200,7 +200,21 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1263465230007172, guid: 9ff3c8f1574eb934f9eb9475f09a4987, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114585878724953718, guid: 9ff3c8f1574eb934f9eb9475f09a4987,
+        type: 2}
+      propertyPath: ModuleDisplayName
+      value: Castor
+      objectReference: {fileID: 0}
+    - target: {fileID: 102253688190275330, guid: 9ff3c8f1574eb934f9eb9475f09a4987,
+        type: 2}
+      propertyPath: m_Text
+      value: Castor
+      objectReference: {fileID: 0}
+    - target: {fileID: 1263465230007172, guid: 9ff3c8f1574eb934f9eb9475f09a4987, type: 2}
+      propertyPath: m_Name
+      value: Castor
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9ff3c8f1574eb934f9eb9475f09a4987, type: 2}
@@ -618,7 +632,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1402382204163072, guid: 86285b0180238bc47bf1dbeb410ed867, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 86285b0180238bc47bf1dbeb410ed867, type: 2}

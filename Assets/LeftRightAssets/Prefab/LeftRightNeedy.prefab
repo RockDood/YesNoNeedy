@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 114660646657232328}
   - component: {fileID: 114060708493835244}
   - component: {fileID: 114337565282407532}
+  - component: {fileID: 114833395066494846}
   m_Layer: 0
   m_Name: LeftRightNeedy
   m_TagString: Untagged
@@ -1134,6 +1135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _Bomb: {fileID: 114297178835386010}
+  Boss: {fileID: 114833395066494846}
   Needy: {fileID: 114337565282407532}
   Dial: {fileID: 114441487256192574}
   OffOn:
@@ -1388,6 +1390,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShaderNames:
   - KT/Mobile/Diffuse
+--- !u!114 &114833395066494846
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1060521345021460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96a2fc4ae3e690a498a0d85a2b5e0b99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114850672531599304
 MonoBehaviour:
   m_ObjectHideFlags: 1
