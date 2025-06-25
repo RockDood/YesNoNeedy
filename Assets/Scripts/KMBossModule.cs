@@ -8,6 +8,11 @@ public class KMBossModule : MonoBehaviour
     {
         return GetIgnoredModules(module.ModuleDisplayName, @default);
     }
+    
+    public string[] GetIgnoredModules(KMNeedyModule module, string[] @default = null)
+    {
+        return GetIgnoredModules(module.ModuleDisplayName, @default);
+    }
 
     public string[] GetIgnoredModules(string moduleDisplayName, string[] @default = null)
     {
@@ -28,7 +33,7 @@ public class KMBossModule : MonoBehaviour
             return @default ?? new string[0];
         }
 
-        var list = ((Func<string, string[]>) bossModuleManagerAPI["GetIgnoredModules"])(moduleDisplayName);
+        var list = ((Func<string, string[]>)bossModuleManagerAPI["GetIgnoredModules"])(moduleDisplayName);
         Debug.LogFormat(@"[KMBossModule] Boss Module Manager returned list for “{0}”: {1}", moduleDisplayName, list == null ? "<null>" : list.Join(", "));
         return list ?? @default ?? new string[0];
     }
